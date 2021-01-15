@@ -1,14 +1,14 @@
-def shellsort(a):
-    gap=len(a)//2
+def shellSort(listValue):
+    gap=len(listValue)//2
     while gap>0:
-        for index in range(gap,len(a)):
-            currentValue=a[index]
-            position=index-gap
-            while position+gap>=gap and currentValue<a[position]:
-                a[position+gap]=a[position]
+        for i in range(gap,len(listValue)):
+            currentValue=listValue[i]
+            position=i-gap
+            while position+gap>=gap and listValue[position]>currentValue:
+                listValue[position+gap]=listValue[position]
                 position-=gap
-            a[position+gap]=currentValue
+            listValue[position+gap]=currentValue
         gap=gap//2
-    return a
-a=[34,2,1,31,3,6,4,7,5,3,1]
-print(shellsort(a))
+    return listValue
+listValue=[4,2,2,3,3,2,4,4,22,4,5,56,99,2,2,]
+print(shellSort(listValue))

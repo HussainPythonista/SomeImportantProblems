@@ -45,7 +45,6 @@ elements = [
         { 'name': 'vignesh',  'age': 21,  'time_hours': 2.5},
         { 'name': 'chinmay',  'age': 24,  'time_hours': 1.5},
     ]
-for i in elements:
-    print(i)
+
 print(mergeSort(elements,key,decending=True))
     
