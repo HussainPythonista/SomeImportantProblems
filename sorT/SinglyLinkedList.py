@@ -36,7 +36,11 @@ class SinglyLinkedList:
             newTail.next=None
         if self.head ==self.tail:
             self.head=self.tail=None
-            
+    def pushBegin(self,value):
+            node=Node(value)
+            node.next=self.head
+            node.tail=None
+            self.head=node
     def Print(self):
         itr=self.head
         Value=""
@@ -45,9 +49,9 @@ class SinglyLinkedList:
             itr=itr.next
         print(Value)
 ll=SinglyLinkedList()
-ll.push(99)
-ll.push(76)
-ll.push(973)
-ll.pop()
+ll.pushBegin(99)
+ll.pushBegin(745)
+ll.pushBegin(99)
+
 ll.Print()
 
