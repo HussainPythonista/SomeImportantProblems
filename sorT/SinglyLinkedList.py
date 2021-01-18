@@ -16,8 +16,6 @@ class SinglyLinkedList:
             self.tail.next=node
             self.tail=node
     def pop(self):
-        
-
         if self.head is None:
             print("Linked List is empty")
         else:
