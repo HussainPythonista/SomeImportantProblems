@@ -12,11 +12,6 @@ class SinglyLinkedList:
             self.head = node
             self.tail = node
         else:
-            #nextRef=self.head
-            #while nextRef.next is not None:
-            #    nextRef=nextRef.next
-            #nextRef.next=Node(value)
-            #self.tail=nextRef
             node=Node(value)
             self.tail.next=node
             self.tail=node
