@@ -1,7 +1,11 @@
-class Node:
+class Node:#Create the Node
     def __init__(self,value,next=None):
         self.value = value
         self.next = next
+#node=Node(11)
+#node.value=12
+#print(node.value)
+#This Contains Only Node
 class SinglyLinkedList:
     def __init__(self,head=None):
         self.head = head
@@ -63,11 +67,24 @@ class SinglyLinkedList:
             count+=1
             itr=itr.next
         return count
+    def pop(self):
+        if self.head is None:
+            print("Linked List is Empty")
+        elif self.head.next is None:
+            self.head=None
+        else:
+                itr=self.head
+                while itr.next.next is not None:
+                    itr=itr.next
+                itr.next=None
+
     def deleteByIndex(self,index):
-        
+        if index==self.count():
+            pass
         count=0
         itr=self.head
         while itr:
+            
             if index-1==count:
                 itr.next=itr.next.next
                 break
@@ -75,6 +92,7 @@ class SinglyLinkedList:
             count+=1
         if index==0:
             self.head=self.head.next
+        
     
     def addByIndex(self,index,value):
         if index==0:
@@ -112,12 +130,13 @@ class SinglyLinkedList:
         for i in (listValue):
             self.insertLast(i)
 ll=SinglyLinkedList()
-listValue=set([1,2,3])
+listValue=set([1,2,3,4])
 ll.insertValue(listValue)
-ll.insertBeforeTheValue(1,"Pundai")
-ll.deleteByIndex(0)
-ll.deleteByIndex(0)
+ll.insertBeforeTheValue(1,'kalanthar')
+
+
 ll.addByIndex(0,"Mohamed")
 ll.addByIndex(1,9)
 ll.addByIndex(3,9)
+ll.deleteByIndex(7)
 ll.printValue()
