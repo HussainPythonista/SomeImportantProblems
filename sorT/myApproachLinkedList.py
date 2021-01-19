@@ -8,7 +8,7 @@ class Node:#Create the Node
 #This Contains Only Node
 class SinglyLinkedList:
     def __init__(self,head=None):
-        self.head = head
+        self.head = head#Starting Point of Linked List
         
     def atBegin(self,value):
         node=Node(value)
