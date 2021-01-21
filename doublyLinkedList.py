@@ -41,7 +41,7 @@ class doublyLinkedList:
                 if itr.value==data:
                     node=Node(value)
                     node.next=itr.next
-                    node.prev=itr
+                    node.prev=itr.prev.next
                     itr.next.prev=node
                     if itr.next==None:
                         itr.next.prev=node
@@ -103,5 +103,6 @@ class doublyLinkedList:
 ll=doublyLinkedList()
 listValue=["Apple","Banana","Orange","JackFruit","Graphs"]
 ll.insertValue(listValue)
+ll.insertByDataAfter("Banana","lemon")
 ll.printReverse()
 ll.printValue()
