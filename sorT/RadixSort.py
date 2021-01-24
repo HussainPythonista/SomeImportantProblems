@@ -36,9 +36,6 @@ def mostDigits(listValue):
             maximum=max(maximum,maxValue)
         return maximum
 
-
-
-
 from functools import reduce
 def flatten(listValue):
     return reduce(lambda x,y:x+y,listValue)
@@ -47,7 +44,6 @@ def RadixSort(listValue):
     maximumnoIteration=mostDigits(listValue)
     
     for k in range(maximumnoIteration): 
-        
         bucketWithIndex=[[] for i in range(0,10)]
         for index in listValue:
             num=ValueOfIndex2(index,k)
