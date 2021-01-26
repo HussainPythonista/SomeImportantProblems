@@ -11,21 +11,45 @@ class HashTable:
         return place
     def __setitem__(self,key,value): # insted of this push(self,key,value)
         hash=self.getHash(key)
-        self.array[hash].append((key,value))
+        found=False
+        for index,element in enumerate(self.array[hash]):
+            if len(element)==2 and element[0]==key:
+                
+                self.array[hash][index]=(key,value)
+                found=True
+                break
+             
+        else:
+            self.array[hash].append((key,value))
     def __getitem__(self,key):# insted of this get(self,key):
         hash=self.getHash(key)
-        return self.array[hash]
+        for index,elments in enumerate(self.array[hash]):
+            if len(elments)==2 and elments[0]==key:
+                return elments[1]
+            else:
+                return None
+
+        
     def __delitem__(self,key):
         hash=self.getHash(key)
-        self.array[hash]=0
+        for index,elments in enumerate(self.array[hash]):
+            if len(elments)==2 and elments[0]==key:
+                del self.array[hash][index]
+                break
+        else:
+            self.array[hash]=None
 
 
 hash=HashTable()
+hash["Love"]="List"
 hash["march 6"]=99 #instead of this hash.push("march 6",99)
 
 hash["march 17"]="March 17"
-del hash["march 18"]
-print(hash.array)
+hash['march 17']="Pundai"
+del hash["march 17"]
+print(hash["march 17"])
+
+
 
 
     
