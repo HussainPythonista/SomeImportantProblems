@@ -1,7 +1,7 @@
 class HashTable:
     def __init__(self):
         self.Max=10
-        self.array=[[] for i in range(100)]
+        self.array=[[] for i in range(10)]
 
     def getHash(self,element):
         h=0#For adding the ordered value
@@ -11,14 +11,17 @@ class HashTable:
         return place
     def __setitem__(self,key,value): # insted of this push(self,key,value)
         hash=self.getHash(key)
-        found=False
-        for index,element in enumerate(self.array[hash]):
-            if len(element)==2 and element[0]==key:
-                self.array[hash][index]=(key,value)
-                found=True
-                break 
-        else:
-            self.array[hash].append((key,value))
+        count=0
+        
+        self.array[hash].append((key,value))
+        if len(self.array[hash])>1:
+            for index,elements in enumerate(self.array):
+                if len(elements)>1:
+                    newPlace=(hash+1)%10
+                    self.array[newPlace].append((key,value))
+                    self.array[hash].pop()
+                    break
+    
     def __getitem__(self,key):# insted of this get(self,key):
         hash=self.getHash(key)
         for index,elments in enumerate(self.array[hash]):
@@ -39,15 +42,11 @@ class HashTable:
 
 
 hash=HashTable()
-hash["Love"]="List"
-hash["march 6"]=99 #instead of this hash.push("march 6",99)
+hash["march 17"]=99
+hash["march 6"]=97
+hash["march 2"]=927
+hash["march"]="latest"
+hash["maa"]=975
+hash["ma"]="Dummy"
 
-hash["march 17"]="March 17"
-hash['march 17']="Pundai"
-del hash["march 17"]
-print(hash["march 17"])
-
-
-
-
-    
+print(hash.array)
