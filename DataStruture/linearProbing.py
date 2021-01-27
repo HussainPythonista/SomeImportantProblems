@@ -48,5 +48,5 @@ hash["march 2"]=927
 hash["march"]="latest"
 hash["maa"]=975
 hash["ma"]="Dummy"
-
+print(hash["ma"])
 print(hash.array)
