@@ -21,8 +21,6 @@ class HashTable:
                     if len(self.array[hash])==0:
                         self.array[hash].append((key,value))
                         break
-                    hash+=1
-                    
     
     def __getitem__(self,key):# insted of this get(self,key):
         hash=self.getHash(key)

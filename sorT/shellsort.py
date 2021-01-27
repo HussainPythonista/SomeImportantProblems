@@ -4,7 +4,7 @@ def shellSort(listValue):
         for i in range(gap,len(listValue)):
             currentValue=listValue[i]
             position=i-gap
-            while position+gap>=gap and listValue[position]>currentValue:
+            while position>=0 and listValue[position]>currentValue:
                 listValue[position+gap]=listValue[position]
                 position-=gap
             listValue[position+gap]=currentValue
