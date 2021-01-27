@@ -39,13 +39,11 @@ class HashTable:
 
 
 hash=HashTable()
-hash["Love"]="List"
-hash["march 6"]=99 #instead of this hash.push("march 6",99)
 
-hash["march 17"]="March 17"
-hash['march 17']="Pundai"
-del hash["march 17"]
-print(hash["march 17"])
+hash["salmon"]=99 
+#instead of this hash.push("march 6",99)
+
+print(hash.array)
 
 
 

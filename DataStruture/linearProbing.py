@@ -12,15 +12,17 @@ class HashTable:
     def __setitem__(self,key,value): # insted of this push(self,key,value)
         hash=self.getHash(key)
         count=0
-        
-        self.array[hash].append((key,value))
-        if len(self.array[hash])>1:
+        if self.array[hash]==[]:
+            self.array[hash].append((key,value))
+        else:
             for index,elements in enumerate(self.array):
-                if len(elements)>1:
-                    newPlace=(hash+1)%10
-                    self.array[newPlace].append((key,value))
-                    self.array[hash].pop()
-                    break
+                if len(elements)!=0:
+                    hash=(hash+1)%10
+                    if len(self.array[hash])==0:
+                        self.array[hash].append((key,value))
+                        break
+                    hash+=1
+                    
     
     def __getitem__(self,key):# insted of this get(self,key):
         hash=self.getHash(key)
@@ -42,11 +44,9 @@ class HashTable:
 
 
 hash=HashTable()
-hash["march 17"]=99
-hash["march 6"]=97
-hash["march 2"]=927
-hash["march"]="latest"
-hash["maa"]=975
-hash["ma"]="Dummy"
-print(hash["ma"])
+hash["salmon"]=99
+hash["tomato"]="tomato"
+hash["march 17"]="march 17"
+hash["march 6"]="march 6"
+hash["darkblue"]=2
 print(hash.array)
