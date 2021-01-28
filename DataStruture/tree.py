@@ -3,31 +3,53 @@ class treeNode:
         self.parents=None
         self.data=data
         self.children=[]
-
-    def addChild(self,data):
-        self.parents=self
-        self.children.append(data)
+    def getLevel(self):
+        i=0
+        current=self.parents
+        
+        while current:
+            i+=1
+            current=current.parents
+        return i
+    def addChild(self,child):
+        child.parents=self
+        self.children.append(child)
+    
     def printDatas(self):
-        if len(self.children)>1:
+        spaces=" "*self.getLevel()*2
+        if len(spaces)>0:
+            prefix=spaces+"|__"
+        else:
+            prefix=""
+
+        print(prefix+self.data)
+        if self.children:
             for child in self.children:
-                print(child.data)
+                child.printDatas()
+        
 def treeDataStructure():
     root=treeNode("Electronics")
+
     laptop=treeNode("Laptop")
-    laptop.addChild("Lenovo")
-    laptop.addChild("MacBook")
-    laptop.addChild("MicroSoft Surface")
+    laptop.addChild(treeNode("Lenovo"))
+    laptop.addChild(treeNode("MacBook"))
+    laptop.addChild(treeNode("MicroSoft Surface"))
+
     mobiles=treeNode("Mobiles")
-    mobiles.addChild("OnePlus")
-    mobiles.addChild("Iphone")
-    mobiles.addChild("Mi")
-    condoms=treeNode("Condoms")
-    condoms.addChild("Manforce")
-    condoms.addChild("Moods")
-    condoms.addChild("Durex")
+    mobiles.addChild(treeNode("OnePlus"))
+    mobiles.addChild(treeNode("Iphone"))
+    mobiles.addChild(treeNode("Mi"))
+    condoms=treeNode(("Condoms"))
+    
+    condoms.addChild(treeNode("Manforce"))
+    condoms.addChild(treeNode("Moods"))
+    condoms.addChild(treeNode("Durex"))
     
     root.addChild(laptop)
     root.addChild(mobiles)
     root.addChild(condoms)
+    mobiles.getLevel()
+    return root
     
-treeDataStructure()
+root=treeDataStructure()
+root.printDatas()
