@@ -5,8 +5,11 @@ b=[[7,8],
 result=[[0,0],
 [0,0]]
 i=0
-for i in range(len(a[0])-1):
-    for j in range(len(b[0])):
+print(len(a[0]))
+for l in range(len(a[0])):
+    print(l)
+for i in range(0,len(a)):
+    for j in range(len(a)):
         for k in range(len(b)):
-            result[i][j]=result[i][j]+(a[i][k]*b[k][j])
+          result[i][j]=result[i][j]+a[i][k]*b[k][j]
 print(result)
