@@ -21,7 +21,6 @@ class treeNode:
             prefix=spaces+"|__"
         else:
             prefix=""
-
         print(prefix+self.data)
         if self.children:
             for child in self.children:
