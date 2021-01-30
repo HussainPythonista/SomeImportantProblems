@@ -16,17 +16,20 @@ class BinarySearchTree:
         else:
             itr=self.root
             while itr:
-                if value<itr.value:
-                    if itr.left==None:
-                        itr.left=Node(value)
-                    else:
-                        itr=itr.left#For repeat the same step
-                elif value>itr.value:
-                    if itr.right==None:
-                        itr.right=Node(value)
-                    else:
-                        itr=itr.right#For repeat the same Step
-                    
+                if itr.value==value:
+                    return
+                else:
+                    if value<itr.value:
+                        if itr.left==None:
+                            itr.left=Node(value)
+                        else:
+                            itr=itr.left#For repeat the same step
+                    elif value>itr.value:
+                        if itr.right==None:
+                            itr.right=Node(value)
+                        else:
+                            itr=itr.right#For repeat the same Step 
+             
     def printValue(self):
         pass
 
