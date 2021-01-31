@@ -57,10 +57,6 @@ class BinaryTree:
            
         add=self.data+leftSum+rightSum
         return add
-    def deleteValue(self,value):
-        if self.right!=None:
-            right=self.right. min()
-            return right
 
     def search(self,value):
         if self.data==value:
@@ -77,15 +73,34 @@ class BinaryTree:
             else:
                 return False
     def min(self):
-        if self.left:
+        if self.left!=None:
             return self.left.min()
-        return self.data
+        else:
+            return self.data
     def max(self):
         if self.right==None:
             return self.data
         if self.right!=None:
             return self.right.max()
     #Delete the node
+    def delete(self,value):
+        if value<self.data:
+            if self.left!=None:
+                self.left=self.left.delete(value)
+        elif value>self.data:
+            if self.right!=None:
+                self.right=self.right.delete(value)
+        else:
+            if self.right==None and self.left==None:
+                return None
+            if self.left==None:
+                return self.right
+            if self.right==None:
+                return self.left
+            minValue=self.right.min()
+            self.data=minValue
+            self.right=self.right.delete(minValue)
+        return self
             
 def someFuckingFunction(elements):
     root=BinaryTree(elements[0])
@@ -99,8 +114,9 @@ if __name__=="__main__":
 
     print(tree.inOrderTraversal())
    
-    tree.search(9)
+    tree.search(4)
     tree.min()
     tree.max()
-    print(tree.deleteValue(99))
+    tree.delete(34)
+    print(tree.inOrderTraversal())
 
