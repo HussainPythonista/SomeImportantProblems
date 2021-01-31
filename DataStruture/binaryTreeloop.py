@@ -9,34 +9,63 @@ class BinarySearchTree:
     def __init__(self):
         self.root=None
     def addValue(self,value):
-        node=Node(value)
         if self.root==None:
-            self.root=node
-            return self.root
+            self.root=Node(value)
         else:
-            itr=self.root
-            while itr:
-                if itr.value==value:
-                    return
-                else:
-                    if value<itr.value:
-                        if itr.left==None:
-                            itr.left=Node(value)
-                        else:
-                            itr=itr.left#For repeat the same step
-                    elif value>itr.value:
-                        if itr.right==None:
-                            itr.right=Node(value)
-                        else:
-                            itr=itr.right#For repeat the same Step 
-             
-    def printValue(self):
+            current=self.root
+            while current:
+                if value<current.value:
+                    if current.left==None:
+                        current.left=Node(value)
+                        return current.left
+                    else:
+                        current=current.left
+                if value>current.value:
+                    if current.right==None:
+                        current.right=Node(value)
+                        return current.right
+                    else:
+                        current=current.right
+        return self.root
+    def searchTheElement(self,element):
+        found=False
+        current=self.root
+        while found==False and current:
+            if element<current.value:
+                current=current.left
+            elif element>current.value:
+                current=current.right
+            else:
+                print("Found")
+                found=True
+        if found==False:
+            return "Not Found"
+        return element   
+    def inOrderTraverse(self):
         pass
+        
+def BuildTree(elements):
+        root=BinarySearchTree()
+        root.addValue(elements[0])
+        for i in range(1,len(elements)):
+            root.addValue(elements[i])
+        
+        return root
+numbres=[4,3,1]
+root=BinarySearchTree()
+root.addValue(50)
+root.addValue(60)
+root.addValue(55)
 
-tree=BinarySearchTree()
-tree.addValue(30)
-tree.addValue(20)
-tree.addValue(15)
-tree.addValue(50)
+root.addValue(40)
+root.addValue(45)
+root.inOrderTraverse()
+print(root.root.left.right.value)
+print(root.searchTheElement(60))
+
+
+
+
+
 
 
