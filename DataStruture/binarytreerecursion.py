@@ -85,22 +85,38 @@ class BinaryTree:
     #Delete the node
     def delete(self,value):
         if value<self.data:
-            if self.left!=None:
+            if self.left!=None: #For checking the left side is Not None
                 self.left=self.left.delete(value)
-        elif value>self.data:
+        elif value>self.data:#For checking the rightt side is Not None
             if self.right!=None:
                 self.right=self.right.delete(value)
         else:
-            if self.right==None and self.left==None:
+
+            if self.right==None and self.left==None:#Reaching Last Node
                 return None
-            if self.left==None:
+            if self.left==None:#If left node has None but right has only one node
                 return self.right
-            if self.right==None:
+            if self.right==None:#If right node has None but leftt has only one node
                 return self.left
-            minValue=self.right.min()
-            self.data=minValue
-            self.right=self.right.delete(minValue)
+
+    #For the Node With two Child
+            #minValue=self.right.min()
+            #self.data=minValue
+            #self.right=self.right.delete(minValue)
+
+            maxValue=self.left.max()
+            self.data=maxValue
+            self.left=self.left.delete(self.data)
         return self
+    def level(self):
+        i=0
+        while self.left:
+            if self.left==None:
+                break
+            else:
+                i+=1
+        return i
+
             
 def someFuckingFunction(elements):
     root=BinaryTree(elements[0])
@@ -117,6 +133,8 @@ if __name__=="__main__":
     tree.search(4)
     tree.min()
     tree.max()
-    tree.delete(34)
+    tree.delete(1)
+    print(tree.level())
     print(tree.inOrderTraversal())
+    
 
