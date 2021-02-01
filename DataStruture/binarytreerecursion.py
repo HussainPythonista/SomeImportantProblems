@@ -112,7 +112,7 @@ class BinaryTree:
         data=[]#Which i want to print
         queue=[]#Visited
         node=self
-        queue.append(self)
+        queue.append(node)
         while len(queue)>0:
             node=queue.pop(0)
             data.append(node)
