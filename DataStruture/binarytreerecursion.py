@@ -4,7 +4,7 @@ class Node:
         self.left=None
         self.right=None
 class BinaryTree:
-    def __init__(self,data):
+    def __init__(self,data=None):
         self.data=data
         self.left=None
         self.right=None
@@ -23,10 +23,10 @@ class BinaryTree:
                 self.right=BinaryTree(data)
     
     def inOrderTraversal(self):
-        elements=[]
+        elements=""
         if self.left:#Visit Left Tree 
             elements+=self.left.inOrderTraversal()
-        elements.append(self.data)#Base Node
+        elements+=str(self.data)+"->"#Base Node
         if self.right:#Right subTree
             elements+=self.right.inOrderTraversal()
         
@@ -108,33 +108,37 @@ class BinaryTree:
             self.data=maxValue
             self.left=self.left.delete(self.data)
         return self
-    def level(self):
-        i=0
-        while self.left:
-            if self.left==None:
-                break
-            else:
-                i+=1
-        return i
+    def levelTraversal(self):
+        data=[]#Which i want to print
+        queue=[]#Visited
+        node=self
+        queue.append(self)
+        while len(queue)>0:
+            node=queue.pop(0)
+            data.append(node)
 
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
             
+        return data
+    def levelTraverse(self):
+        node=BinaryTree()
+        print(node.left)
+
 def someFuckingFunction(elements):
     root=BinaryTree(elements[0])
     for i in range(1,len(elements)):
         root.addChild(elements[i])
-    root.search(99)
     return root
 if __name__=="__main__":
-    numbers=[17,4,23,1,20,9,18,34]
+    numbers=[10,15,6,20,8,3]
     tree=someFuckingFunction(numbers)
-
-    print(tree.inOrderTraversal())
-   
-    tree.search(4)
     tree.min()
     tree.max()
-    tree.delete(1)
-    print(tree.level())
-    print(tree.inOrderTraversal())
+    root=tree.levelTraversal()
+    for i in root:
+        print(i.data)
     
 

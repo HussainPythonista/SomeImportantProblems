@@ -1,4 +1,6 @@
 #binarySearchTree
+
+
 class Node:
     def __init__(self,value) :
         self.value=value
@@ -41,8 +43,22 @@ class BinarySearchTree:
         if found==False:
             return "Not Found"
         return element   
-    def inOrderTraverse(self):
-        pass
+    def breadthFirstSearch(self):  
+        #Create deque
+        node=self.root
+        data=[]
+        queue=[]
+        queue.append(node)
+        while len(queue)>0:
+            node=queue.pop(0)
+            #data+=str(node.value)+"->"
+            data.append(node)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        return data
         
 def BuildTree(elements):
         root=BinarySearchTree()
@@ -53,15 +69,18 @@ def BuildTree(elements):
         return root
 numbres=[4,3,1]
 root=BinarySearchTree()
-root.addValue(50)
-root.addValue(60)
-root.addValue(55)
+root.addValue(10)
 
-root.addValue(40)
-root.addValue(45)
-root.inOrderTraverse()
-print(root.root.left.right.value)
-print(root.searchTheElement(60))
+root.addValue(15)
+root.addValue(6)
+
+root.addValue(3)
+root.addValue(8)
+root.addValue(20)
+
+root=root.breadthFirstSearch()
+for i in root:
+    print(i.value)
 
 
 
