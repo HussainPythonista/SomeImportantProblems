@@ -107,7 +107,8 @@ class BinaryTree:
             maxValue=self.left.max()
             self.data=maxValue
             self.left=self.left.delete(self.data)
-        return self
+        return self  
+            
     def levelTraversal(self):
         data=[]#Which i want to print
         queue=[]#Visited
@@ -133,12 +134,13 @@ def someFuckingFunction(elements):
         root.addChild(elements[i])
     return root
 if __name__=="__main__":
-    numbers=[10,15,6,20,8,3]
+    numbers=[10,6,20,8,23,3]
     tree=someFuckingFunction(numbers)
     tree.min()
     tree.max()
-    root=tree.levelTraversal()
-    for i in root:
-        print(i.data)
+    
+    print(tree.delete(20))
+    print(tree.inOrderTraversal())
+    
     
 

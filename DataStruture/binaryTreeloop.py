@@ -1,6 +1,9 @@
 #binarySearchTree
 
 
+
+
+
 class Node:
     def __init__(self,value) :
         self.value=value
@@ -59,7 +62,33 @@ class BinarySearchTree:
                 queue.append(node.right)
         
         return data
-        
+    def preOrderTraversal(self):
+        node=self.root
+        data=[]
+        stack=[]
+        stack.append(node)
+        while len(stack)>0:
+            node=stack.pop()
+            data.append(node)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+    def inOrderTraversal(self):
+        node=self.root
+        stack=[]
+        data=[]
+        while True:
+            if node:
+                stack.append(node)
+                node=node.left
+            elif stack:
+                node=stack.pop()
+                data.append(node.value)
+                node=node.right
+            else:
+                break
+        return data        
 def BuildTree(elements):
         root=BinarySearchTree()
         root.addValue(elements[0])
@@ -78,9 +107,10 @@ root.addValue(3)
 root.addValue(8)
 root.addValue(20)
 
-root=root.breadthFirstSearch()
-for i in root:
-    print(i.value)
+root=root.inOrderTraversal()
+print(root)
+
+
 
 
 
