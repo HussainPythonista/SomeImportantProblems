@@ -1,5 +1,3 @@
-
-    
 def Palindrome(string):
         if len(string)>1:
             string=string.lower()
