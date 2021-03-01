@@ -17,13 +17,39 @@ class mergeList:
             node=Node(value)
             itr.next=node
             node.prev=itr
-    def midValue(self):
-        fastMove=self.head
-        slowMove=self.head
-        while fastMove.next!=self.getLastElement():
-            fastMove=fastMove.next.next
+    def sortedList(self,a,b):
+        result=None
+        if a==None:
+            return b
+        if b==None:
+            return a
+        if a.val<=b.val:
+            result=a
+            result.next=self.sortedList(a.next,b)
+        else:
+            result=b
+            result.next=self.sortedList(a,b.next)
+        return result
+    def mergeSort(self,head):
+        #self.printValue()
+        if head==None or head.next==None:
+            return head
+        middle=self.midValue(head)
+        nextMid=middle.next
+        middle.next=None
+        left=self.mergeSort(head)
+        right=self.mergeSort(nextMid)
+        sortedList=self.sortedList(left,right)
+        print(left.val)
+        return sortedList
+    def midValue(self,head):
+        fastMove=head
+        slowMove=head
+        while fastMove.next!=None and fastMove.next.next!=None:
             slowMove=slowMove.next
-        return slowMove.val
+            fastMove=fastMove.next.next
+        return slowMove
+    
     def getLastElement(self):
         itr=self.head
         while itr.next:
@@ -45,15 +71,13 @@ class mergeList:
         print(strValue)
 
 mm=mergeList()
-
-mm.addValue(99)
-mm.addValue(76)
-mm.addValue(92)
-mm.addValue(53)
 mm.addValue(64)
 mm.addValue(3)
-mm.addValue(90)
-mm.addValue(98)
-print(mm.midValue())
+mm.addValue(76)
+mm.addValue(87)
+mm.addValue(53)
+
+
+print(mm.mergeSort(mm.head))
 mm.printValue()
         
