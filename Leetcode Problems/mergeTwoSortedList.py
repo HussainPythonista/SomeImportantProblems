@@ -17,22 +17,13 @@ class mergeList:
             node=Node(value)
             itr.next=node
             node.prev=itr
-            
-    def sortVal(self):
-        newList=[]
-        itr=self.head
-        while itr.next:
-            newList.append(itr.val)
-            itr=itr.next
-        newList=sorted(newList,key=lambda node:node)
     def midValue(self):
-        fast=self.head
-        slow=self.head
-        while fast!=None and fast.next!=None:
-            fast=fast.next.next
-            slow=slow.next
-            
-        return slow.val
+        fastMove=self.head
+        slowMove=self.head
+        while fastMove.next!=self.getLastElement():
+            fastMove=fastMove.next.next
+            slowMove=slowMove.next
+        return slowMove.val
     def getLastElement(self):
         itr=self.head
         while itr.next:
@@ -63,7 +54,6 @@ mm.addValue(64)
 mm.addValue(3)
 mm.addValue(90)
 mm.addValue(98)
-mm.sortVal()
 print(mm.midValue())
 mm.printValue()
         
