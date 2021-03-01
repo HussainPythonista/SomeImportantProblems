@@ -25,6 +25,14 @@ class mergeList:
             newList.append(itr.val)
             itr=itr.next
         newList=sorted(newList,key=lambda node:node)
+    def midValue(self):
+        fast=self.head
+        slow=self.head
+        while fast!=None and fast.next!=None:
+            fast=fast.next.next
+            slow=slow.next
+            
+        return slow.val
     def getLastElement(self):
         itr=self.head
         while itr.next:
@@ -53,6 +61,9 @@ mm.addValue(92)
 mm.addValue(53)
 mm.addValue(64)
 mm.addValue(3)
+mm.addValue(90)
+mm.addValue(98)
 mm.sortVal()
+print(mm.midValue())
 mm.printValue()
         
